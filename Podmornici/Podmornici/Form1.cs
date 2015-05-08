@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Podmornici.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,25 +13,60 @@ namespace Podmornici
 {
     public partial class Form1 : Form
     {
+        Game igra { get; set; }
+
+        Image pozadina { get; set; }
         public Form1()
         {
             InitializeComponent();
-            Mapa m = new Mapa();
-
-            m.napolniSlucajno();
-
-            for (int i = 0; i < 10; i++)
+            
+            igra = new Game(Game.Nivo.lesno);
+            foreach(Brod b in igra.mapaIgrach.Brodovi)
             {
-                for (int j = 0; j < 10; j++)
-                {
-                    Console.Write(string.Format("{0}\t", m.mapa[i][j]));
-                }
-                Console.WriteLine();
+                Console.WriteLine(b.ToString());
             }
+            this.Width += 40;
+            this.Height += 40;
+            pozadina = Resources.ocean;
+            timer.Start();
+            DoubleBuffered = true;
+            Invalidate();
+        }
 
-            foreach (Brod b in m.Brodovi)
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.Clear(Color.White);
+            e.Graphics.DrawImage(pozadina, new Rectangle(0, 0, 740, 440));
+            igra.crtaj(e.Graphics);
+        }
+
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            Console.WriteLine(e.X + " " + e.Y);
+            Console.WriteLine("X = " + (((e.Y - 50) / 30) + 1) + " Y=" + (((e.X - 375) / 30) + 1));
+            int x = e.X;
+            int y = e.Y;
+            if (igra.IgracNaRed)
             {
-                Console.WriteLine(b);
+                if (x >= 375 && x <= 675 && y >= 50 && y <= 350)
+                {
+                    x = (e.Y - 50) / 30;
+                    y = (e.X - 375) / 30;
+
+                    igra.GagajIgrac(x, y);
+
+                    Invalidate();
+                }
+            }
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            Console.WriteLine(igra.IgracNaRed);
+            if (!igra.IgracNaRed)
+            {
+                igra.GagajBot();
+                Invalidate();
             }
         }
     }
