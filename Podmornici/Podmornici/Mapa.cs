@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading;
 
 namespace Podmornici
 {
@@ -35,25 +34,35 @@ namespace Podmornici
 
         public bool pukaj(int x, int y)
         {
-            if (x >= 0 && x < 10 && y >= 0 && y < 10)
-            {
-                if (mapa[x][y] == Sostojba.Brod)
+            //for (int i = 0; i < 9; i++ )
+            //{
+            //    for(int j = 0; j < 9; j++)
+            //    {
+            //        Console.Write(mapa[i][j]);
+            //    }
+            //    Console.WriteLine();
+            //}
+                if (x >= 0 && x < 10 && y >= 0 && y < 10)
                 {
-                    mapa[x][y] = Sostojba.PogodenBrod;
 
-                    foreach (Brod b in Brodovi)
+                    if (mapa[x][y] == Sostojba.Brod)
                     {
-                        b.pogodi(x, y);
+                        mapa[x][y] = Sostojba.PogodenBrod;
+
+                        foreach (Brod b in Brodovi)
+                        {
+                            b.pogodi(x, y);
+                        }
+                        return true;
+
                     }
-                    return true;
+                    else if (mapa[x][y] == Sostojba.Slobodno)
+                    {
+                        mapa[x][y] = Sostojba.Promasheno;
+                        return true;
+                    }
+                    return false;
                 }
-                else if(mapa[x][y] == Sostojba.Slobodno)
-                {
-                    mapa[x][y] = Sostojba.Promasheno;
-                    return true;
-                }
-                return false;
-            }
             return false;
         }
 
@@ -113,21 +122,16 @@ namespace Podmornici
         }
         public void napolniSlucajno()
         {
-            Console.WriteLine("OVDE!RANDOM!!!!");
+            Brodovi = new List<Brod>();
+            Console.WriteLine(Brodovi.Count);
             int i = 2;
             Random rand = new Random();
-            Thread.Sleep(rand.Next(0,100)); 
             while (i < 6)
             {
-                Brod b ;
+                Brod b = new Brod(i, Brod.Nasoka.Horizontalno, rand.Next(0, 10), rand.Next(0, 10));
                 if(rand.Next(0, 2) == 1){
-                    b = new Brod(i,Brod.Nasoka.Horizontalno, rand.Next(0, 10), rand.Next(0, 10));
+                    b.smeniNasoka();
                 }
-                else
-                {
-                    b = new Brod(i, Brod.Nasoka.Vertikalno, rand.Next(0, 10), rand.Next(0, 10));
-                }
-
                 if (proveri(b))
                 {
                     i++;

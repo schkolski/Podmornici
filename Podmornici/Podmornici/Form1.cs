@@ -16,11 +16,11 @@ namespace Podmornici
         Game igra { get; set; }
 
         Image pozadina { get; set; }
-        public Form1()
+        public Form1(String ime , MapaIgrach mapa_igrach)
         {
             InitializeComponent();
             
-            igra = new Game(Game.Nivo.lesno);
+            igra = new Game(Game.Nivo.lesno, ime, mapa_igrach);
             foreach(Brod b in igra.mapaIgrach.Brodovi)
             {
                 Console.WriteLine(b.ToString());
@@ -52,7 +52,7 @@ namespace Podmornici
                 {
                     x = (e.Y - 50) / 30;
                     y = (e.X - 375) / 30;
-
+                    lblRed.Text = "Бот на ред";
                     igra.GagajIgrac(x, y);
 
                     Invalidate();
@@ -62,9 +62,10 @@ namespace Podmornici
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            Console.WriteLine(igra.IgracNaRed);
+            //Console.WriteLine(igra.IgracNaRed);
             if (!igra.IgracNaRed)
             {
+                lblRed.Text = "Играч на ред";
                 igra.GagajBot();
                 Invalidate();
             }

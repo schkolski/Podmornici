@@ -28,70 +28,131 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnNovaIgra = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
             this.btnInstrukcii = new System.Windows.Forms.Button();
-            this.btnLesno = new System.Windows.Forms.Button();
-            this.btnSredno = new System.Windows.Forms.Button();
-            this.btnTesko = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbIme = new System.Windows.Forms.TextBox();
+            this.rbLesno = new System.Windows.Forms.RadioButton();
+            this.tbTeshko = new System.Windows.Forms.RadioButton();
+            this.btnNovaIgra = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnNovaIgra
-            // 
-            this.btnNovaIgra.Location = new System.Drawing.Point(12, 12);
-            this.btnNovaIgra.Name = "btnNovaIgra";
-            this.btnNovaIgra.Size = new System.Drawing.Size(166, 47);
-            this.btnNovaIgra.TabIndex = 0;
-            this.btnNovaIgra.Text = "Нова игра";
-            this.btnNovaIgra.UseVisualStyleBackColor = true;
             // 
             // btnInstrukcii
             // 
-            this.btnInstrukcii.Location = new System.Drawing.Point(12, 111);
+            this.btnInstrukcii.BackColor = System.Drawing.Color.Transparent;
+            this.btnInstrukcii.Location = new System.Drawing.Point(483, 355);
             this.btnInstrukcii.Name = "btnInstrukcii";
-            this.btnInstrukcii.Size = new System.Drawing.Size(166, 48);
+            this.btnInstrukcii.Size = new System.Drawing.Size(114, 36);
             this.btnInstrukcii.TabIndex = 1;
             this.btnInstrukcii.Text = "Инструкции";
-            this.btnInstrukcii.UseVisualStyleBackColor = true;
+            this.btnInstrukcii.UseVisualStyleBackColor = false;
             // 
-            // btnLesno
+            // label1
             // 
-            this.btnLesno.Location = new System.Drawing.Point(12, 82);
-            this.btnLesno.Name = "btnLesno";
-            this.btnLesno.Size = new System.Drawing.Size(75, 23);
-            this.btnLesno.TabIndex = 2;
-            this.btnLesno.Text = "Лесно";
-            this.btnLesno.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Window;
+            this.label1.Location = new System.Drawing.Point(17, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 17);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Име:";
             // 
-            // btnSredno
+            // label2
             // 
-            this.btnSredno.Location = new System.Drawing.Point(103, 82);
-            this.btnSredno.Name = "btnSredno";
-            this.btnSredno.Size = new System.Drawing.Size(75, 23);
-            this.btnSredno.TabIndex = 3;
-            this.btnSredno.Text = "Средно";
-            this.btnSredno.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.Window;
+            this.label2.Location = new System.Drawing.Point(10, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 17);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Ниво:";
             // 
-            // btnTesko
+            // tbIme
             // 
-            this.btnTesko.Location = new System.Drawing.Point(184, 82);
-            this.btnTesko.Name = "btnTesko";
-            this.btnTesko.Size = new System.Drawing.Size(75, 23);
-            this.btnTesko.TabIndex = 4;
-            this.btnTesko.Text = "Тешко";
-            this.btnTesko.UseVisualStyleBackColor = true;
+            this.tbIme.Location = new System.Drawing.Point(66, 13);
+            this.tbIme.Name = "tbIme";
+            this.tbIme.Size = new System.Drawing.Size(107, 20);
+            this.tbIme.TabIndex = 4;
+            this.tbIme.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.tbIme.Validating += new System.ComponentModel.CancelEventHandler(this.tbIme_Validating);
+            // 
+            // rbLesno
+            // 
+            this.rbLesno.AutoSize = true;
+            this.rbLesno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbLesno.ForeColor = System.Drawing.SystemColors.Window;
+            this.rbLesno.Location = new System.Drawing.Point(66, 67);
+            this.rbLesno.Name = "rbLesno";
+            this.rbLesno.Size = new System.Drawing.Size(72, 21);
+            this.rbLesno.TabIndex = 5;
+            this.rbLesno.Text = "Лесно";
+            this.rbLesno.UseVisualStyleBackColor = true;
+            // 
+            // tbTeshko
+            // 
+            this.tbTeshko.AutoSize = true;
+            this.tbTeshko.Checked = true;
+            this.tbTeshko.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTeshko.ForeColor = System.Drawing.SystemColors.Window;
+            this.tbTeshko.Location = new System.Drawing.Point(66, 40);
+            this.tbTeshko.Name = "tbTeshko";
+            this.tbTeshko.Size = new System.Drawing.Size(74, 21);
+            this.tbTeshko.TabIndex = 6;
+            this.tbTeshko.TabStop = true;
+            this.tbTeshko.Text = "Тешко";
+            this.tbTeshko.UseVisualStyleBackColor = true;
+            // 
+            // btnNovaIgra
+            // 
+            this.btnNovaIgra.BackColor = System.Drawing.SystemColors.Window;
+            this.btnNovaIgra.BackgroundImage = global::Podmornici.Properties.Resources.naslovna_slika;
+            this.btnNovaIgra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnNovaIgra.Location = new System.Drawing.Point(603, 355);
+            this.btnNovaIgra.Name = "btnNovaIgra";
+            this.btnNovaIgra.Size = new System.Drawing.Size(114, 35);
+            this.btnNovaIgra.TabIndex = 0;
+            this.btnNovaIgra.Text = "Нова игра";
+            this.btnNovaIgra.UseVisualStyleBackColor = false;
+            this.btnNovaIgra.Click += new System.EventHandler(this.btnNovaIgra_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.rbLesno);
+            this.panel1.Controls.Add(this.tbTeshko);
+            this.panel1.Controls.Add(this.tbIme);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Location = new System.Drawing.Point(483, 236);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(234, 113);
+            this.panel1.TabIndex = 8;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // NewGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(281, 167);
-            this.Controls.Add(this.btnTesko);
-            this.Controls.Add(this.btnSredno);
-            this.Controls.Add(this.btnLesno);
+            this.ClientSize = new System.Drawing.Size(724, 402);
             this.Controls.Add(this.btnInstrukcii);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnNovaIgra);
             this.Name = "NewGame";
             this.Text = "NewGame";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.NewGame_Paint);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -100,8 +161,12 @@
 
         private System.Windows.Forms.Button btnNovaIgra;
         private System.Windows.Forms.Button btnInstrukcii;
-        private System.Windows.Forms.Button btnLesno;
-        private System.Windows.Forms.Button btnSredno;
-        private System.Windows.Forms.Button btnTesko;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tbIme;
+        private System.Windows.Forms.RadioButton rbLesno;
+        private System.Windows.Forms.RadioButton tbTeshko;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

@@ -21,11 +21,11 @@ namespace Podmornici
         public Nivo nivo { get; set; }
         public List<Point> slobodni { get; set; }
         Pen moliv;
-        public Game(Nivo n)
+        public Game(Nivo n, String ime, MapaIgrach mapa_igrach)
         {
-            mapaIgrach = new MapaIgrach();
+            mapaIgrach = mapa_igrach;
             mapaBot = new MapaBot();
-            mapaIgrach.napolniSlucajno();
+            // mapaIgrach.napolniSlucajno();
             mapaBot.napolniSlucajno();
             IgracNaRed = true;
             nivo = n;
@@ -76,7 +76,7 @@ namespace Podmornici
             int y = 50;
             for(int i = 0; i < 11; i++){
                 g.DrawLine(moliv, x + i * 30, y, x + i * 30, 350);
-                g.DrawLine(moliv, 25, y + i*30, 325, y+i*30);
+                g.DrawLine(moliv, 25, y + i * 30, 325, y + i * 30);
 
                 g.DrawLine(moliv, 350 + x + i * 30, y, 350 + x + i * 30, 350);
                 g.DrawLine(moliv, 375, y + i * 30, 675, y + i * 30);
