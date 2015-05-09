@@ -4,6 +4,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
+using Podmornici.Properties;
+using System.Reflection;
+using System.IO;
 
 namespace Podmornici
 {
@@ -21,6 +25,9 @@ namespace Podmornici
         public Nivo nivo { get; set; }
         public List<Point> slobodni { get; set; }
         Pen moliv;
+
+        public SoundPlayer pogodok { get; set; }
+        public SoundPlayer promasheno { get; set; }
         public Game(Nivo n, String ime, MapaIgrach mapa_igrach)
         {
             mapaIgrach = mapa_igrach;
@@ -38,6 +45,11 @@ namespace Podmornici
                 }
             }
             moliv = new Pen(Color.Chocolate);
+            
+            Stream str = Properties.Resources.promasuvanje1;
+            promasheno = new SoundPlayer(str);
+            Stream str1 = Resources.pogodok;
+            pogodok = new SoundPlayer(str1);
         }
         
         public void GagajBot()
@@ -48,8 +60,16 @@ namespace Podmornici
             {
                 int idx = rand.Next(0, slobodni.Count);
                 Point p = slobodni[idx];
-                mapaIgrach.pukaj(p.X, p.Y);
-                Console.WriteLine("OVDEEEEEEEE:" + p.X, p.Y);
+                //mapaIgrach.pukaj(p.X, p.Y);
+                if (mapaIgrach.pukaj(p.X,p.Y)==0)
+                {
+                    promasheno.Play();
+                    IgracNaRed = !IgracNaRed;
+                }
+                else
+                {
+                    pogodok.Play();
+                }
                 slobodni.Remove(p);
             }
             else if (nivo == Nivo.sredno)
@@ -60,13 +80,20 @@ namespace Podmornici
             {
 
             }
-            IgracNaRed = !IgracNaRed;
+            
+           // IgracNaRed = !IgracNaRed;
         }
 
         public void GagajIgrac(int x, int y)
         {
-            if (mapaBot.pukaj(x, y)) { 
+            if (mapaBot.pukaj(x, y) == 0) {
+                
                 IgracNaRed = !IgracNaRed;
+                promasheno.Play();
+            }
+            else
+            {
+                pogodok.Play();
             }
         }
 

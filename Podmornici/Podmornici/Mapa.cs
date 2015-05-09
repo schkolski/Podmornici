@@ -16,6 +16,8 @@ namespace Podmornici
             Brod,
         }
         public Sostojba[][] mapa { get; set; }
+
+        public int []  brodovi { get; set; }
         public List<Brod> Brodovi { get; set; }
         public Mapa()
         {
@@ -30,21 +32,16 @@ namespace Podmornici
                 }
             }
             Brodovi = new List<Brod>();
+            brodovi = new int [6];
+            brodovi[0] = 1;
+            brodovi[1] = 1;
         }
 
-        public bool pukaj(int x, int y)
+        public int pukaj(int x, int y) // pogodeno 1, promasheno 0, nevalidno -1
         {
-            //for (int i = 0; i < 9; i++ )
-            //{
-            //    for(int j = 0; j < 9; j++)
-            //    {
-            //        Console.Write(mapa[i][j]);
-            //    }
-            //    Console.WriteLine();
-            //}
                 if (x >= 0 && x < 10 && y >= 0 && y < 10)
                 {
-
+                    Console.WriteLine(mapa[x][y].ToString()+"****************");
                     if (mapa[x][y] == Sostojba.Brod)
                     {
                         mapa[x][y] = Sostojba.PogodenBrod;
@@ -52,18 +49,20 @@ namespace Podmornici
                         foreach (Brod b in Brodovi)
                         {
                             b.pogodi(x, y);
+                            
                         }
-                        return true;
+                        return 1;
 
                     }
                     else if (mapa[x][y] == Sostojba.Slobodno)
                     {
+                        Console.WriteLine("DA VLEGUVAM");
                         mapa[x][y] = Sostojba.Promasheno;
-                        return true;
+                        return 0;
                     }
-                    return false;
+                    return -1;
                 }
-            return false;
+            return -1;
         }
 
         public void dodajBrodNaMapa(Brod b)

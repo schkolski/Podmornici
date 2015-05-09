@@ -1,10 +1,13 @@
-﻿using Podmornici.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
+using Podmornici.Properties;
+using System.Reflection;
+using System.IO;
 
 namespace Podmornici
 {
@@ -23,6 +26,8 @@ namespace Podmornici
         public int pikselY { get; set; }
         public int Pogodoci { get; set; }
         public Image brodImg { get; set; }
+
+        public SoundPlayer potonat { get; set; }
         public Point voIndeks(int pX, int pY)
         {
             int tmpY = (int)Math.Floor((pX - 25) / 30.0);
@@ -47,6 +52,8 @@ namespace Podmornici
             pikselX = p.X;
             pikselY = p.Y;
             postaviSlika();
+            Stream str = Resources.potonat;
+            potonat = new SoundPlayer(str);
         }
         public void postaviSlika()
         {
@@ -94,7 +101,12 @@ namespace Podmornici
 
         public bool potopen()
         {
-            return Pogodoci == Golemina;
+            if (Pogodoci == Golemina)
+            {
+                //potonat.Play();
+                return true;
+            }
+            return false;
         }
 
         public bool pogoden()

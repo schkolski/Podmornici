@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Resources;
 namespace Podmornici
 {
     public partial class Form1 : Form
@@ -16,6 +16,7 @@ namespace Podmornici
         Game igra { get; set; }
 
         Image pozadina { get; set; }
+
         public Form1(String ime , MapaIgrach mapa_igrach)
         {
             InitializeComponent();
@@ -42,8 +43,8 @@ namespace Podmornici
 
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
-            Console.WriteLine(e.X + " " + e.Y);
-            Console.WriteLine("X = " + (((e.Y - 50) / 30) + 1) + " Y=" + (((e.X - 375) / 30) + 1));
+            //Console.WriteLine(e.X + " " + e.Y);
+            //Console.WriteLine("X = " + (((e.Y - 50) / 30) + 1) + " Y=" + (((e.X - 375) / 30) + 1));
             int x = e.X;
             int y = e.Y;
             if (igra.IgracNaRed)
@@ -52,9 +53,11 @@ namespace Podmornici
                 {
                     x = (e.Y - 50) / 30;
                     y = (e.X - 375) / 30;
-                    lblRed.Text = "Бот на ред";
                     igra.GagajIgrac(x, y);
-
+                    if (!igra.IgracNaRed)
+                        {
+                            lblRed.Text = "Бот на ред";
+                        }
                     Invalidate();
                 }
             }
@@ -65,8 +68,17 @@ namespace Podmornici
             //Console.WriteLine(igra.IgracNaRed);
             if (!igra.IgracNaRed)
             {
-                lblRed.Text = "Играч на ред";
                 igra.GagajBot();
+                Console.WriteLine(igra.mapaIgrach.brodovi + " Brodovi preostanati na igracot");
+                //if (igra.mapaIgrach.brodovi == 0)
+                //{
+                //    lblRed.Text = "Вие Изгубивте";
+                //    timer.Stop();
+                //}
+                if (igra.IgracNaRed)
+                {
+                    lblRed.Text = "Играч на ред";
+                }
                 Invalidate();
             }
         }

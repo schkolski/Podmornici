@@ -32,6 +32,7 @@ namespace Podmornici
                             {
                                 b.crtaj(g, false);
                                 break;
+                                brodovi[b.Golemina]=1;
                             }
                         }
                     }
