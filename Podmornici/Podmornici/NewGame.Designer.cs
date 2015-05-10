@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnInstrukcii = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbIme = new System.Windows.Forms.TextBox();
@@ -43,24 +42,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnInstrukcii
-            // 
-            this.btnInstrukcii.BackColor = System.Drawing.Color.Transparent;
-            this.btnInstrukcii.FlatAppearance.BorderSize = 0;
-            this.btnInstrukcii.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnInstrukcii.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInstrukcii.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnInstrukcii.ForeColor = System.Drawing.Color.White;
-            this.btnInstrukcii.Location = new System.Drawing.Point(483, 355);
-            this.btnInstrukcii.Name = "btnInstrukcii";
-            this.btnInstrukcii.Size = new System.Drawing.Size(114, 36);
-            this.btnInstrukcii.TabIndex = 1;
-            this.btnInstrukcii.Text = "Инструкции";
-            this.btnInstrukcii.UseVisualStyleBackColor = false;
-            this.btnInstrukcii.Click += new System.EventHandler(this.btnInstrukcii_Click);
-            this.btnInstrukcii.MouseLeave += new System.EventHandler(this.btnInstrukcii_MouseLeave);
-            this.btnInstrukcii.MouseHover += new System.EventHandler(this.btnInstrukcii_MouseHover);
             // 
             // label1
             // 
@@ -165,7 +146,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(724, 402);
-            this.Controls.Add(this.btnInstrukcii);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnNovaIgra);
             this.Name = "NewGame";
@@ -182,7 +162,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnNovaIgra;
-        private System.Windows.Forms.Button btnInstrukcii;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbIme;
