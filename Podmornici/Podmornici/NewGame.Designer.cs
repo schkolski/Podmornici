@@ -38,19 +38,29 @@
             this.btnNovaIgra = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnInstrukcii
             // 
             this.btnInstrukcii.BackColor = System.Drawing.Color.Transparent;
+            this.btnInstrukcii.FlatAppearance.BorderSize = 0;
+            this.btnInstrukcii.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnInstrukcii.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInstrukcii.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnInstrukcii.ForeColor = System.Drawing.Color.White;
             this.btnInstrukcii.Location = new System.Drawing.Point(483, 355);
             this.btnInstrukcii.Name = "btnInstrukcii";
             this.btnInstrukcii.Size = new System.Drawing.Size(114, 36);
             this.btnInstrukcii.TabIndex = 1;
             this.btnInstrukcii.Text = "Инструкции";
             this.btnInstrukcii.UseVisualStyleBackColor = false;
+            this.btnInstrukcii.Click += new System.EventHandler(this.btnInstrukcii_Click);
+            this.btnInstrukcii.MouseLeave += new System.EventHandler(this.btnInstrukcii_MouseLeave);
+            this.btnInstrukcii.MouseHover += new System.EventHandler(this.btnInstrukcii_MouseHover);
             // 
             // label1
             // 
@@ -111,9 +121,14 @@
             // 
             // btnNovaIgra
             // 
-            this.btnNovaIgra.BackColor = System.Drawing.SystemColors.Window;
-            this.btnNovaIgra.BackgroundImage = global::Podmornici.Properties.Resources.naslovna_slika;
+            this.btnNovaIgra.BackColor = System.Drawing.Color.Transparent;
             this.btnNovaIgra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnNovaIgra.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnNovaIgra.FlatAppearance.BorderSize = 0;
+            this.btnNovaIgra.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnNovaIgra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNovaIgra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnNovaIgra.ForeColor = System.Drawing.Color.White;
             this.btnNovaIgra.Location = new System.Drawing.Point(603, 355);
             this.btnNovaIgra.Name = "btnNovaIgra";
             this.btnNovaIgra.Size = new System.Drawing.Size(114, 35);
@@ -121,6 +136,8 @@
             this.btnNovaIgra.Text = "Нова игра";
             this.btnNovaIgra.UseVisualStyleBackColor = false;
             this.btnNovaIgra.Click += new System.EventHandler(this.btnNovaIgra_Click);
+            this.btnNovaIgra.MouseLeave += new System.EventHandler(this.btnNovaIgra_MouseLeave);
+            this.btnNovaIgra.MouseHover += new System.EventHandler(this.btnNovaIgra_MouseHover);
             // 
             // panel1
             // 
@@ -139,6 +156,10 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            // 
             // NewGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -153,6 +174,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -168,5 +190,6 @@
         private System.Windows.Forms.RadioButton tbTeshko;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
     }
 }

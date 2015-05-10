@@ -142,4 +142,28 @@
   <data name="promasuvanje1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\promasuvanje.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="dzid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dzid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="okean" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\okean.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Podmornici" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Podmornici.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_5m" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\5m.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2m" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2m.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_4m" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\4m.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_4mc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\4mc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_5mc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\5mc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

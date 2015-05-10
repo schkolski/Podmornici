@@ -17,7 +17,7 @@ namespace Podmornici
                 {
                     if (mapa[i][j] == Sostojba.Promasheno)
                     {
-                        g.FillEllipse(new SolidBrush(Color.DeepSkyBlue), j * 30 + 375 + 2, i * 30 + 50 + 2, 26, 26);
+                        g.FillRectangle(new SolidBrush(Color.FromArgb(80, 0,0,0)), j * 30 + 410 + 1, i * 30 + 100 + 1,29,29);
                     }
                     else if (mapa[i][j] == Sostojba.PogodenBrod)
                     {
@@ -25,14 +25,15 @@ namespace Podmornici
                         {
                             if (b.tukaSum(i, j) && !b.potopen())
                             {
-                                g.FillEllipse(new SolidBrush(Color.Red), j * 30 + 375 + 2, i * 30 + 50 + 2, 26, 26);
+                                g.FillEllipse(new SolidBrush(Color.FromArgb(180, 144,0,0)), j * 30 + 410 + 2, i * 30 + 100 + 2, 26, 26);
+                                g.FillEllipse(new SolidBrush(Color.FromArgb(90, 204, 66, 0)), j * 30 + 410 + 2 + 4, i * 30 + 100 + 2 + 4, 18, 18);
+                                g.FillEllipse(new SolidBrush(Color.FromArgb(60, 255, 204, 33)), j * 30 + 410 + 2 + 8, i * 30 + 100 + 2 + 8, 10, 10);
                                 break;
                             }
                             else if(b.tukaSum(i, j) && b.potopen())
                             {
                                 b.crtaj(g, false);
                                 break;
-                                brodovi[b.Golemina]=1;
                             }
                         }
                     }

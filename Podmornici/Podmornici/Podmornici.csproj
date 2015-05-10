@@ -51,7 +51,14 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Game.cs" />
+    <Compile Include="Konfeta.cs" />
     <Compile Include="Mapa.cs" />
     <Compile Include="MapaBot.cs" />
     <Compile Include="MapaIgrach.cs" />
@@ -71,6 +78,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewGame.resx">
       <DependentUpon>NewGame.cs</DependentUpon>
@@ -124,6 +134,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\potonat.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Podmornici.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dzid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\more.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\okean.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5m.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2m.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4m.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4mc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5mc.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

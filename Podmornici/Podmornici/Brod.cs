@@ -26,18 +26,20 @@ namespace Podmornici
         public int pikselY { get; set; }
         public int Pogodoci { get; set; }
         public Image brodImg { get; set; }
+        public Image brodCrven { get; set; }
+        public Boolean voRed { get; set; }
 
         public SoundPlayer potonat { get; set; }
         public Point voIndeks(int pX, int pY)
         {
-            int tmpY = (int)Math.Floor((pX - 25) / 30.0);
-            int tmpX = (int)Math.Floor((pY - 50) / 30.0);
+            int tmpY = (int)Math.Floor((pX - 50) / 30.0);
+            int tmpX = (int)Math.Floor((pY - 100) / 30.0);
             return new Point(tmpX, tmpY);
         }
         public Point voPiksel(int iX, int iY)
         {
-            int tmpX = iY * 30 + 25;
-            int tmpY = iX * 30 + 50;
+            int tmpX = iY * 30 + 50;
+            int tmpY = iX * 30 + 100;
             return new Point(tmpX, tmpY);
         }
         
@@ -54,12 +56,26 @@ namespace Podmornici
             postaviSlika();
             Stream str = Resources.potonat;
             potonat = new SoundPlayer(str);
+            voRed = true;
         }
         public void postaviSlika()
         {
-            
-                brodImg = Resources._5;
-            
+            if (Golemina > 3){
+                 brodImg = Resources._5m;
+                brodCrven = Resources._5mc;
+            }
+
+            else if (Golemina == 3)
+            {
+                brodImg = Resources._4m;
+                brodCrven = Resources._4mc;
+            }
+
+            else
+            {
+                brodImg = Resources._4m;
+                brodCrven = Resources._4mc;
+            }
         }
 
         public void Pomesti(int dX, int dY)
@@ -71,6 +87,7 @@ namespace Podmornici
 
             X = p.X;
             Y = p.Y;
+            Console.WriteLine(X + " " + Y);
         }
 
         public bool tukaSum(int x, int y)
@@ -137,29 +154,44 @@ namespace Podmornici
 
         public void crtaj (Graphics g, bool igrach)
         {
-            if (potopen() && igrach)
+            if (!voRed)
             {
-                Brush cetka = new SolidBrush(Color.Black);
+
                 if (nasoka == Brod.Nasoka.Horizontalno)
                 {
-                    g.FillEllipse(cetka, Y * 30 + 25 + 5, X * 30 + 50 + 2, 30 * Golemina - 10, 26);
+                    //g.FillEllipse(cetka, Y * 30 + 50 + 5, X * 30 + 100 + 2, 30 * Golemina - 10, 26);
+                    g.DrawImage(brodCrven, Y * 30 + 50 + 5, X * 30 + 100 + 2, 30 * Golemina - 10, 26);
                 }
                 else
                 {
-                    g.FillEllipse(cetka, Y * 30 + 25 + 2, X * 30 + 50 + 5, 26, 30 * Golemina - 10);
+                   // g.FillEllipse(cetka, Y * 30 + 50 + 2, X * 30 + 100 + 5, 26, 30 * Golemina - 10);
+                    g.DrawImage(brodCrven, Y * 30 + 50 + 2, X * 30 + 100 + 5, 26, 30 * Golemina - 10);
+                }
+
+            }
+            else if (potopen() && igrach)
+            {
+                Brush cetka = new SolidBrush(Color.FromArgb(100, 0,0,0));
+                if (nasoka == Brod.Nasoka.Horizontalno)
+                {
+                    g.FillEllipse(cetka, Y * 30 + 50 + 5, X * 30 + 100 + 2, 30 * Golemina - 10, 26);
+                }
+                else
+                {
+                    g.FillEllipse(cetka, Y * 30 + 50 + 2, X * 30 + 100 + 5, 26, 30 * Golemina - 10);
                 }
                 cetka.Dispose();
             }
             else if (potopen() && !igrach)
             {
-                Brush cetka = new SolidBrush(Color.Black);
+                Brush cetka = new SolidBrush(Color.FromArgb(100, 0, 0, 0));
                 if (nasoka == Brod.Nasoka.Horizontalno)
                 {
-                    g.FillEllipse(cetka, Y * 30 + 375 + 5, X * 30 + 50 + 2, 30 * Golemina - 10, 26);
+                    g.FillEllipse(cetka, Y * 30 + 410 + 5, X * 30 + 100 + 2, 30 * Golemina - 10, 26);
                 }
                 else
                 {
-                    g.FillEllipse(cetka, Y * 30 + 375 + 2, X * 30 + 50 + 5, 26, 30 * Golemina - 10);
+                    g.FillEllipse(cetka, Y * 30 + 410 + 2, X * 30 + 100 + 5, 26, 30 * Golemina - 10);
                 }
                 cetka.Dispose();
             }

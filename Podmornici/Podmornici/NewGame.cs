@@ -35,7 +35,7 @@ namespace Podmornici
 
         private void btnNovaIgra_Click(object sender, EventArgs e)
         {
-            PostaviBrodovi f = new PostaviBrodovi(tbIme.Text, rbLesno.Checked);
+            PostaviBrodovi f = new PostaviBrodovi(tbIme.Text, rbLesno.Checked, this, 0, 0);
             f.Show();
             this.Hide();
         }
@@ -52,6 +52,32 @@ namespace Podmornici
                 errorProvider1.SetError(tbIme, null);
                 e.Cancel = false;
             }
+        }
+
+        private void btnNovaIgra_MouseHover(object sender, EventArgs e)
+        {
+            btnNovaIgra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+        }
+
+        private void btnNovaIgra_MouseLeave(object sender, EventArgs e)
+        {
+            btnNovaIgra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        }
+
+        private void btnInstrukcii_MouseHover(object sender, EventArgs e)
+        {
+            btnInstrukcii.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        }
+
+        private void btnInstrukcii_MouseLeave(object sender, EventArgs e)
+        {
+            btnInstrukcii.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        }
+
+        private void btnInstrukcii_Click(object sender, EventArgs e)
+        {
+
         }
 
     }
