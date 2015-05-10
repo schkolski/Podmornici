@@ -63,6 +63,7 @@ namespace Podmornici
             predhodenPogodok = Point.Empty;
             pocetenPogodok = Point.Empty;
             nasokaPogodok = Kompas.None;
+            pogodoci = new List<Point>();
             brod2Potopen = Resources._4mc;
             brod4Potopen = Resources._5mc;
             brod2ok = Resources._4m;
@@ -79,152 +80,80 @@ namespace Podmornici
         }
         Point pocetenPogodok;
         Kompas nasokaPogodok { get; set; }
+        List<Point> pogodoci;
         public void GagajBot()
         {
-            Console.WriteLine(nivo);
-            Random rand = new Random();
+            Point gaganje = Point.Empty;
+
             if (nivo == Nivo.lesno)
             {
-                int idx = rand.Next(0, slobodni.Count);
-                Point p = slobodni[idx];
-                //mapaIgrach.pukaj(p.X, p.Y);
-                if (mapaIgrach.pukaj(p.X,p.Y)==0)
-                {
-                    promasheno.Play();
-                    IgracNaRed = !IgracNaRed;
-                }
-                else
-                {
-                    pogodok.Play();
-                }
-                slobodni.Remove(p);
+                gaganje = pukajRandom(slobodni);
+                pukaj(gaganje);
             }
             else if (nivo == Nivo.tesko)
             {
-                if (predhodenPogodok == Point.Empty)
+                if (pogodoci.Count == 0)
                 {
-                    int idx = rand.Next(0, slobodni.Count);
-                    Point p = slobodni[idx];
-                    if (mapaIgrach.pukaj(p.X, p.Y) == 0)
+                    gaganje = pukajRandom(slobodni);
+                    
+                    if (pukaj(gaganje))
                     {
-                        promasheno.Play();
-                        IgracNaRed = !IgracNaRed;
+                        pogodoci.Add(gaganje);
                     }
-                    else
-                    {
-                        pogodok.Play();
-                        predhodenPogodok = p;
-                        pocetenPogodok = p;
-                    }
-                    slobodni.Remove(p);
                 }
                 else
                 {
-                    if (nasokaPogodok == Kompas.None)
-                    {
-                        List<Point> sosedi = zemiSlobodniSosedi(predhodenPogodok);
-                        int idx = rand.Next(0, sosedi.Count);
-                        Point p = sosedi[idx];
-                        if (mapaIgrach.pukaj(p.X, p.Y) == 1)
-                        {
-                            if (predhodenPogodok.X == p.X)
-                            {
-                                if (predhodenPogodok.Y - p.Y > 0)
-                                {
-                                    nasokaPogodok = Kompas.Sever;
-                                }
-                                else
-                                {
-                                    nasokaPogodok = Kompas.Jug;
-                                }
-                            }
-                            else
-                            {
-                                if (predhodenPogodok.X - p.X > 0)
-                                {
-                                    nasokaPogodok = Kompas.Zapad;
-                                }
-                                else
-                                {
-                                    nasokaPogodok = Kompas.Istok;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            IgracNaRed = !IgracNaRed;
-                        }
-                        slobodni.Remove(p);
-                        if(brodotPotona(p)){
-                            nasokaPogodok = Kompas.None;
-                            predhodenPogodok = Point.Empty;
-                            pocetenPogodok = Point.Empty;
-                        }
-                    }
-                    else
-                    {
-                        Point p = predhodenPogodok;
-                        if(nasokaPogodok == Kompas.Sever)
-                            p.X --;
-                        else if(nasokaPogodok == Kompas.Jug)
-                            p.X ++;
-                        else if(nasokaPogodok == Kompas.Istok)
-                            p.Y++;
-                        else if(nasokaPogodok == Kompas.Zapad)
-                            p.Y--;
+                    List<Point> okolinaZaGaganje = zemiOkolina(pogodoci);
+                    if (okolinaZaGaganje.Count != 0)
+                        gaganje = pukajRandom(okolinaZaGaganje);
+                    else gaganje = pukajRandom(slobodni);
 
-                        if(mapaIgrach.pukaj(p.X, p.Y) == 1)
-                            predhodenPogodok = p;
-                        else if(!brodotPotona(predhodenPogodok))
-                        {
-                            if (nasokaPogodok == Kompas.Sever)
-                            {
-                                nasokaPogodok = Kompas.Jug;
-                            }
-                            else if (nasokaPogodok == Kompas.Jug)
-                            {
-                                nasokaPogodok = Kompas.Sever;
-                            }
-                            else if (nasokaPogodok == Kompas.Zapad)
-                            {
-                                nasokaPogodok = Kompas.Istok;
-                            }
-                            else if (nasokaPogodok == Kompas.Istok)
-                            {
-                                nasokaPogodok = Kompas.Zapad;
-                            }
-                            predhodenPogodok = pocetenPogodok;
-                            IgracNaRed = !IgracNaRed;
-                        }
-                        else
-                        {
-                            predhodenPogodok = Point.Empty;
-                            pocetenPogodok = Point.Empty;
-                        }
-
-                        slobodni.Remove(p);
-                        if(brodotPotona(p)){
-                            nasokaPogodok = Kompas.None;
-                            predhodenPogodok = Point.Empty;
-                            pocetenPogodok = Point.Empty;
-                        }
+                    if (pukaj(gaganje))
+                    {
+                        pogodoci.Add(gaganje);
                     }
                 }
             }
-            
-           // IgracNaRed = !IgracNaRed;
+            slobodni.Remove(gaganje);
+            Console.WriteLine("->" + gaganje.ToString() + " <-");
         }
-        private bool brodotPotona(Point q)
+        private List<Point> zemiOkolina(List<Point> lst)
         {
-            foreach (Brod b in mapaIgrach.Brodovi)
+            HashSet<Point> result = new HashSet<Point>();
+            foreach (Point p in lst)
             {
-                if (b.tukaSum(q.X, q.Y))
+                foreach (Brod b in mapaIgrach.Brodovi)
                 {
-                    return b.potopen();
+                    if (b.tukaSum(p.X, p.Y) && !b.potopen())
+                    {
+                        foreach (Point q in zemiSlobodniSosedi(p)) 
+                        {
+                            result.Add(q);
+                        }
+                    }
                 }
             }
-            return false;
+            return result.ToList();
         }
+        private Point pukajRandom(List<Point> okolina)
+        {
+            Random rand = new Random();
+            int idx = rand.Next(0, okolina.Count);
+            
+            return okolina[idx];
+        }
+        private bool pukaj(Point p)
+        {
+            if (mapaIgrach.pukaj(p.X, p.Y) == 0)
+            {
+                promasheno.Play();
+                IgracNaRed = !IgracNaRed;
+                return false;
+            }
+            pogodok.Play();
+            return true;
+        }
+        
         private List<Point> zemiSlobodniSosedi(Point p)
         {
             List<Point> sosedi = new List<Point>();
@@ -256,8 +185,6 @@ namespace Podmornici
 
         public void crtaj(Graphics g)
         {
-
-
             g.Clear(Color.White);
 
             g.DrawImage(slikaPodmornici, 0, 0, 800, 70);

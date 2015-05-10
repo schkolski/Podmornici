@@ -18,15 +18,16 @@ namespace Podmornici
 
         Image pozadina { get; set; }
         NewGame forma;
-        bool nivo;
+        Game.Nivo nivo;
         int rez_igrach;
         int rez_bot;
         String ime;
-        public Form1(String ime , MapaIgrach mapa_igrach, NewGame forma, bool level, int rez_igrach, int rez_bot)
+        public Form1(String ime , MapaIgrach mapa_igrach, NewGame forma, Game.Nivo level, int rez_igrach, int rez_bot)
         {
             InitializeComponent();
             // smeni algoritam soodvetno
-            igra = new Game(Game.Nivo.lesno, ime, mapa_igrach);
+            
+            igra = new Game(level, ime, mapa_igrach);
             foreach(Brod b in igra.mapaIgrach.Brodovi)
             {
                 Console.WriteLine(b.ToString());
@@ -51,8 +52,6 @@ namespace Podmornici
 
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
-            //Console.WriteLine(e.X + " " + e.Y);
-            //Console.WriteLine("X = " + (((e.Y - 50) / 30) + 1) + " Y=" + (((e.X - 375) / 30) + 1));
             int x = e.X;
             int y = e.Y;
             if (igra.IgracNaRed)

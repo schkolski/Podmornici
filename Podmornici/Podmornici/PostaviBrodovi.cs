@@ -18,7 +18,7 @@ namespace Podmornici
         private int prevX;
         private int prevY;
         Brod selektiran;
-        bool Nivo;
+        Game.Nivo Nivo;
         String Ime;
         NewGame forma;
         int rez_igrach;
@@ -29,7 +29,7 @@ namespace Podmornici
         Image slikaMore;
         Timer timer;
 
-        public PostaviBrodovi(String ime, bool nivo, NewGame forma, int rez_igrach, int rez_bot)
+        public PostaviBrodovi(String ime, Game.Nivo nivo, NewGame forma, int rez_igrach, int rez_bot)
         {
 
             InitializeComponent();

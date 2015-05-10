@@ -24,12 +24,12 @@ namespace Podmornici
         List<List<Point>> noviTocki;
         bool pobeda;
         NewGame forma;
-        bool nivo;
+        Game.Nivo nivo;
         int rez_igrach;
         int rez_bot;
         String ime;
 
-        public Form2(bool pobeda, NewGame form, bool nivo, int rez_igrach, int rez_bot, String ime)
+        public Form2(bool pobeda, NewGame form, Game.Nivo nivo, int rez_igrach, int rez_bot, String ime)
         {
             InitializeComponent();
             this.forma = form;

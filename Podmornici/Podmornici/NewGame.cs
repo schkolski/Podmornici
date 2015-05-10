@@ -35,9 +35,21 @@ namespace Podmornici
 
         private void btnNovaIgra_Click(object sender, EventArgs e)
         {
-            PostaviBrodovi f = new PostaviBrodovi(tbIme.Text, rbLesno.Checked, this, 0, 0);
-            f.Show();
-            this.Hide();
+            if (tbIme.Text.Trim().Length > 0)
+            {
+                Game.Nivo nivo = Game.Nivo.tesko;
+                if (rbLesno.Checked)
+                {
+                    nivo = Game.Nivo.lesno;
+                }
+                PostaviBrodovi f = new PostaviBrodovi(tbIme.Text, nivo, this, 0, 0);
+                f.Show();
+                this.Hide();
+            }
+            else
+            {
+                errorProvider1.SetError(tbIme, "Внесете име");
+            }
         }
 
         private void tbIme_Validating(object sender, CancelEventArgs e)

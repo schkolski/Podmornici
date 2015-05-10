@@ -235,23 +235,6 @@ namespace Podmornici
         }
 
         public abstract void crtaj(Graphics g);
-        /*{
-
-            foreach (Brod b in Brodovi)
-            {
-                b.crtaj(g, igrach);
-            }
-            for (int i = 0; i < 10; i++)
-            {
-                for (int j = 0; j < 10; j++)
-                {
-                    if(mapa[i][j] == Sostojba.Promasheno){
-                        if(igrach){
-
-                        }
-                    }
-                }
-            }
-        }*/
+        
     }
 }
